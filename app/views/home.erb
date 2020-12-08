@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<h1>Welcome, fellow Stone-Aholics</h1><br>
+
+<h4><u>LOGIN</h4></u><br>
+<form method="POST" action="/user">
+<label for="username">Username:</label>
+<input type="text" id="username" name="user[username]"><br>
+
+<label for="password">Password:</label>
+<input type="password" id="password" name="user[password]"><br>
+
+<label for="submit"><input type="submit" id="submit"></label><br>
+<br>
+</form>
+<form method="POST" action="/user/new">
+<h4><u>SIGNUP</h4></u><br>
+<label for="new_user">Username:</label>
+<input type="text" id="new_user" name="new_user[username]"><br>
+
+<label for="new_pass">Password:</label>
+<input type="password" id="new_pass" name="new_user[password]"><br>
+
+<label for="create"><input type="submit" id="create" value="Signup"></label><br>
+</form>
+</html>
