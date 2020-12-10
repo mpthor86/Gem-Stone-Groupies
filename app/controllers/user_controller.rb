@@ -1,62 +1,62 @@
-require './config/environment'
-
 class UserController < ApplicationController
-    #get '/user' do
-    #    erb :user.erb
-    #end
-
-    get '/user/:id' do
-        binding.pry
-        @user = User.find_by(params[:id])
-        erb :"user/index"
-    end
     
-    post '/user' do
+    get '/user/:id/home' do
         #binding.pry
+        if valid_user?
+        @user = User.find(params[:id])
+        erb :"user/user_home"
+        else
+            flash[:uh_oh] = "You must be logged in."
+            redirect '/login'
+        end
+    end
+
+    get '/login' do
+        erb :"user/login"
+    end
+
+    post '/login' do
         user = User.find_by_username(params[:user][:username])
         if 
             user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
-            redirect "/user/#{user.id}"
+            redirect "/user/#{user.id}/home"
         else
-            redirect '/error'
+            flash[:error] = "Incorrect Username or Password"
+            redirect '/login'
         end
     end
 
-    post '/user/new' do
+    get '/new' do
+        erb :"user/new"
+    end
+
+    post '/new' do
         user = User.new(params[:new_user])
-        if
-            #binding.pry
-            valid?(user) == false
-            redirect '/error'
+        if user.valid? == false
+            flash[:error] = "Either your Username is taken or Password is blank."
+            redirect '/new'
         else
             user.save
-            redirect "/user/#{user.id}"
-            
+            session[:user_id] = user.id
+            redirect "/user/#{user.id}/home"
         end
     end
 
-    get '/error' do
-        erb :error
+    post '/logout' do
+        session.clear
+        redirect '/'
     end
 
-    helpers do
-        def valid?(user)
-            if
-                user.username.blank? || user.password.blank? || User.find_by_username(params[:new_user][:username])
-                false
-            else
-                true
-            end
+    get '/user/:id/collection' do
+        #binding.pry
+        if valid_user? == true
+            @gems = Gemstone.where(user_id: params[:id])
+            erb :"user/collection"
+        else flash[:uh_oh] = "You must be logged in."
+            redirect '/login'
         end
     end
 
 end
 
-#if
-#    
-#else
-#    user.save
-#    
-#    
-#end
