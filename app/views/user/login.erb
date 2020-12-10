@@ -1,0 +1,11 @@
+<h2><u>Please Login Below</h2></u>
+<h4><%= flash[:error] %></h4><br>
+<h4><%= flash[:uh_oh] %></h4><br>
+<form method="POST" action="/login">
+<label for="username">Username:</label>
+<input type="text" id="username" name="user[username]"><br>
+
+<label for="password">Password:</label>
+<input type="password" id="password" name="user[password]"><br>
+
+<label for="submit"><input type="submit" id="submit"></label>
