@@ -1,0 +1,11 @@
+<h3>Add your new stone to your collection below:</h3>
+<form method='post' action='/gemstone/new'>
+Name:<input type="text" name="gem[name]"><br>
+Properties:<input type="text" name="gem[properties]"><br>
+Source:<input type ="text" name="gem[source]"><br>
+<input type="hidden" name="gem[user_id]" value=<%= current_user.id %>>
+<input type="submit" value="Add Stone"><br>
+</form><br>
+<form method="get" action="/user/<%=current_user.id%>/home">
+<input type="submit" value="Home">
+</form>
