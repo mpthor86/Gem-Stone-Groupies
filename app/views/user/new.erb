@@ -1,0 +1,11 @@
+<h2><u>Signup Below</h2></u><br>
+<h4><%= flash[:error] %></h4><br>
+<form method="POST" action="/new">
+<label for="new_user">Username:</label>
+<input type="text" id="new_user" name="new_user[username]"><br>
+
+<label for="new_pass">Password:</label>
+<input type="password" id="new_pass" name="new_user[password]"><br>
+
+<label for="create"><input type="submit" id="create" value="Signup"></label><br>
+</form>
