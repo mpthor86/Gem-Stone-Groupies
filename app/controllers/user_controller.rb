@@ -1,14 +1,11 @@
 class UserController < ApplicationController
     
-    get '/user/:id/home' do
+    get '/user/:id' do
         #binding.pry
-        if valid_user?
+        logged_in
+        not_authorized
         @user = User.find(params[:id])
-        erb :"user/user_home"
-        else
-            flash[:uh_oh] = "You must be logged in."
-            redirect '/login'
-        end
+        erb :"user/show"
     end
 
     get '/login' do
@@ -20,14 +17,12 @@ class UserController < ApplicationController
         if 
             user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
-            redirect "/user/#{user.id}/home"
-        else
-            flash[:error] = "Incorrect Username or Password"
-            redirect '/login'
+            redirect "/user/#{user.id}"
+        else redirect_login
         end
     end
 
-    get '/new' do
+    get '/signup' do
         erb :"user/new"
     end
 
@@ -39,7 +34,7 @@ class UserController < ApplicationController
         else
             user.save
             session[:user_id] = user.id
-            redirect "/user/#{user.id}/home"
+            redirect "/user/#{user.id}"
         end
     end
 
@@ -50,11 +45,18 @@ class UserController < ApplicationController
 
     get '/user/:id/collection' do
         #binding.pry
-        if valid_user? == true
+        not_authorized
+        logged_in
             @gems = Gemstone.where(user_id: params[:id])
-            erb :"user/collection"
-        else flash[:uh_oh] = "You must be logged in."
-            redirect '/login'
+            erb :"user/index"
+    end
+
+    private
+
+    def not_authorized
+        if session[:user_id] != params[:id].to_i
+            flash[:not_allowed] = "You dont have access to that page."
+            redirect "user/#{session[:user_id]}"
         end
     end
 
