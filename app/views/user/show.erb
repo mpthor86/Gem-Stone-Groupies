@@ -1,0 +1,28 @@
+<h1>Welcome, <%= @user.username %></h1>
+<%=flash[:not_allowed]%><br>
+See your <a href='/user/<%=current_user.id%>/collection'>Collection</a><br>
+<br>
+<form method="get" action="/new_gem">
+Add a new Gemstone to your collection:<br>
+<input type="submit" value="New Stone"><br>
+</form><br>
+<form method="get" action="/users_collections">
+See other users collections:<br>
+<input type="submit" value="All Collections"><br>
+</form><br>
+<div>
+<style>
+body {
+    background-image: url('/images/crystal background.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 600px 250px;
+}
+</style>
+</div>
+
+<div class="sidebar">
+<form method="post" action="/logout">
+<input type="submit" value="LogOut">
+</form>
+</div>
