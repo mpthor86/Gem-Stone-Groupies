@@ -15,15 +15,24 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+    def logged_in
+      if valid_user?
+      else redirect_login
+      end
+    end
     def valid_user?
         if session.include?(:user_id) && session[:user_id] == current_user.id
           true
-        else 
-          false
+        else false
         end
     end
     def current_user
-        User.all.find(session[:user_id])
+        User.all.find_by_id(session[:user_id])
+    end
+
+    def redirect_login
+      flash[:uh_oh] = "You must be logged in."
+      redirect '/login'
     end
 end
 
