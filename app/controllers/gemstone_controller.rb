@@ -34,19 +34,6 @@ class GemstoneController < ApplicationController
         redirect "/user/#{current_user.id}/collection"
     end
 
-    get '/users_collections' do
-        logged_in
-            @user = User.all
-            erb :"users_collections/users_index"
-    end
-
-    get '/user/:id/view_collection' do
-        logged_in
-        @user = User.find(params[:id])
-        @gems = Gemstone.where(user_id: params[:id])
-        erb :"users_collections/collection_index"
-    end
-
     private
     def not_authorized
         if session[:user_id] != @gem.user_id
