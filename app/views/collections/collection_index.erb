@@ -1,0 +1,27 @@
+<h2><u><%=@user.username%></u></h2>
+<body>
+<%if @gems == nil || @gems.empty? %>
+    This users collection is empty.<br>
+<%else%>
+<% @gems.each_with_index do |gem, index| %>
+    <br>
+    <%= index+1 %>.<br>
+    Name: <%= gem.name %><br>
+    Properties: <%= gem.properties %><br>
+    Source: <%= gem.source %><br>
+    <%end%>
+    <%end%>
+    <br>
+    <a href="/<%=@user.id%>/comments">View Comments</a> Or
+<a href='/new_comment'>Comment on This Collection
+</a>
+    
+</body>
+<div class="sidebar">
+<form method="get" action="/user/<%=current_user.id%>">
+    <input type="submit" value="Home">
+    </form>
+<form method="post" action="/logout">
+<input type="submit" value="LogOut">
+</form>
+</div>

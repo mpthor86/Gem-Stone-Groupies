@@ -1,0 +1,15 @@
+<h2><u>Fellow Gem-Addicts</u></h2>
+<% @user.each do |user| %>
+    <%if user.id != current_user.id%>
+    <a href="/user/<%=user.id%>/view_collection"><br><%=user.username%><br></a>
+    <%end%>
+    <%end%><br>
+    <div class="sidebar">
+<form method="get" action="/user/<%=current_user.id%>">
+    <input type="submit" value="Home">
+    </form>
+<form method="post" action="/logout">
+<input type="submit" value="LogOut">
+</form>
+</div>
+
