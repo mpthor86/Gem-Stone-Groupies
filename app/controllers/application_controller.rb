@@ -14,6 +14,15 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
+  not_found do
+    status 404
+    if session[:user_id]
+      redirect "user/#{session[:user_id]}"
+    else
+    redirect '/'
+    end
+  end
+
   helpers do
     def logged_in
       if valid_user?
