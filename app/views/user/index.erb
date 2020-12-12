@@ -18,8 +18,12 @@ Add some Gems to your collection<br>
     </form>
     <%end%>
     <%end%>
-    
+
+
 </body>
+<br>
+<a href="/<%=session[:user_id]%>/comments">View Comments</a>
+
 <div class="sidebar">
 <form method="get" action="/user/<%=current_user.id%>">
     <input type="submit" value="Home">
