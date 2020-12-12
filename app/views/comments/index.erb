@@ -1,0 +1,24 @@
+
+
+<% if @user == nil || @comments.empty? %>
+    No one has commented on this collection.
+    <%else%>
+<% @user.each do |user| %>
+<% @comments.each do |comment| %>
+    <% if user.id == comment.user_id %>
+    User: <%= user.username %><br>
+    <%end%>
+    Comment: <%= comment.comment %><br>
+    <br>
+    <%end%>
+    <%end%>
+    <%end%>
+
+    <div class="sidebar">
+<form method="get" action="/user/<%=current_user.id%>">
+    <input type="submit" value="Home">
+    </form>
+<form method="post" action="/logout">
+<input type="submit" value="LogOut">
+</form>
+</div>

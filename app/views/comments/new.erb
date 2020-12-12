@@ -1,0 +1,8 @@
+<div style="text-align: center;">
+<h2>What Would You Like To Say?</h2>
+</div>
+<form action='/new_comment' method='post'>
+<input type='text-box' name='comment[input]'>
+<input type='hidden' name="comment[user_id]" value="<%=current_user.id%>"><br>
+<input type='submit' value="Add Comment">
+</form>
