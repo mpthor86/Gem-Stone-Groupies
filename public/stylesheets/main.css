@@ -12,27 +12,28 @@
   }
 
   /* --- Welcome Page Styles --- */
-  .homepage {
-    background-image: url('/images/homepage.jpg');
-    background-size: 100% 100%;
-    background-attachment: fixed;
-
-  }
-
-  img {
-    margin-left: auto;
-    margin-right: auto;
-  }
 
   body {
     background-color: rgb(76, 176, 194);
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
+    background-image: url('/images/homepage.jpg');
+  }
+
+  .wrapper2 {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(76, 176, 194);
+    margin: 16px auto;
+    max-width: 960px;
+    padding: 2.25%; /* 18px / 800px */
+    width: 85%;
   }
 
   .wrapper {
-    background: #fff;
+    font-weight: bold;
+    background-color: rgb(76, 176, 194);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -73,7 +74,7 @@
   }
 
   .sidebar {
-    background: #eee;
+    background-color: rgb(139, 210, 231);
     border: 1px solid #ccc;
     float: right;
     padding: 2.08333333333%; /* 5px / 240px */
