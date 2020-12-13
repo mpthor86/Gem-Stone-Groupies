@@ -1,7 +1,6 @@
 class CommentController < ApplicationController
     get '/:id/comments' do
         logged_in
-        delete_collection_id
         @comments = Comment.where(collection_id: params[:id].to_i)
         #binding.pry
         @comments.each do |com|
@@ -27,11 +26,6 @@ class CommentController < ApplicationController
 
 private
 
-def delete_collection_id
-    if session.include?(:collection_id)
-        session.delete(:collection_id)
-    end
-end
 
     def not_allowed
         if session[:user_id] != params[:comment][:user_id].to_i

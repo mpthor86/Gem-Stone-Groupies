@@ -9,15 +9,7 @@ class CollectionsController < ApplicationController
 
     get '/users_collections' do
         logged_in
-        delete_collection_id
             @user = User.all
             erb :"collections/users_index"
-    end
-
-    private
-    def delete_collection_id
-        if session.include?(:collection_id)
-            session.delete(:collection_id)
-        end
     end
 end
