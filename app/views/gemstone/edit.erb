@@ -1,3 +1,4 @@
+
 <h2>Update your stone below:</h2>
 
 <form method="post" action="/gemstone/<%=@gem.id%>/edit">
@@ -11,6 +12,8 @@ Source:<input type="text" name="gem[source]" value="<%=@gem.source%>"><br>
 <input id="hidden" type="hidden" name="_method" value="delete">
 <input type="submit" value="Remove Stone">
 </form>
+</div>
+
 <div class="sidebar">
 <form method="get" action="/user/<%=current_user.id%>">
     <input type="submit" value="Home">
@@ -18,4 +21,3 @@ Source:<input type="text" name="gem[source]" value="<%=@gem.source%>"><br>
 <form method="post" action="/logout">
 <input type="submit" value="LogOut">
 </form>
-</div>

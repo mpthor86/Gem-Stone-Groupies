@@ -1,4 +1,5 @@
-<h3>Add a new Gem to your collection below:</h3>
+<div class="wrapper2">
+<h2>Fill out the form to add to your collection:</h2>
 <form method='post' action='/new_gem'>
 Name:<input type="text" name="gem[name]"><br>
 Properties:<input type="text" name="gem[properties]"><br>
@@ -6,6 +7,7 @@ Source:<input type ="text" name="gem[source]"><br>
 <input type="hidden" name="gem[user_id]" value=<%= current_user.id %>>
 <input type="submit" value="Add Stone">
 </form>
+</div>
 <div class="sidebar">
 <form method="get" action="/user/<%=current_user.id%>">
     <input type="submit" value="Home">
