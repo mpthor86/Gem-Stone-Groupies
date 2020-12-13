@@ -30,7 +30,7 @@ class UserController < ApplicationController
         user = User.new(params[:new_user])
         if user.valid? == false
             flash[:error] = "Either your Username is taken or Password is blank."
-            redirect '/new'
+            redirect '/signup'
         else
             user.save
             session[:user_id] = user.id
