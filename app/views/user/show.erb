@@ -1,15 +1,13 @@
+<div class="wrapper2">
 <h1>Welcome, <%= @user.username %></h1>
 <%=flash[:not_allowed]%><br>
 See your <a href='/user/<%=current_user.id%>/collection'>Collection</a><br>
 <br>
-<form method="get" action="/new_gem">
-Add a new Gemstone to your collection:<br>
-<input type="submit" value="New Stone"><br>
-</form><br>
-<form method="get" action="/users_collections">
-See other users collections:<br>
-<input type="submit" value="All Collections"><br>
-</form><br>
+Add a <a href='/new_gem'>NEW</a> Gemstone to your collection:<br>
+<br>
+See <a href='/users_collections'>OTHER</a> collections:<br>
+
+</div>
 
 <div class="sidebar">
 <form method="post" action="/logout">
