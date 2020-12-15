@@ -19,6 +19,8 @@
     font-family: Sans-Serif;
     line-height: 18px;
     background-image: url('/images/homepage.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .wrapper2 {
