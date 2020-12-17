@@ -1,6 +1,7 @@
 <div class="wrapper2">
-<h2>Fill out the form to add to your collection:</h2>
-<form method='post' action='/new_gem'>
+<h2>Gemstone Form:</h2>
+<%= flash[:incorrect] %><br>
+<form method='post' action='/gemstone/new'>
 Name:<input type="text" name="gem[name]"><br>
 Properties:<input type="text" name="gem[properties]"><br>
 Source:<input type ="text" name="gem[source]"><br>
