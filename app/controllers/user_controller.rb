@@ -14,11 +14,11 @@ class UserController < ApplicationController
 
     post '/login' do
         user = User.find_by_username(params[:user][:username])
-        if 
-            user && user.authenticate(params[:user][:password])
+        if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
             redirect "/user/#{user.id}"
-        else redirect_login
+        else 
+            redirect_login
         end
     end
 
@@ -43,13 +43,7 @@ class UserController < ApplicationController
         redirect '/'
     end
 
-    get '/user/:id/collection' do
-        #binding.pry
-        not_authorized
-        logged_in
-            @gems = Gemstone.where(user_id: params[:id])
-            erb :"user/index"
-    end
+    
 
     private
 
