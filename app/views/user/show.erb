@@ -1,9 +1,9 @@
 <div class="wrapper2">
 <h1>Welcome, <%= @user.username %></h1>
 <%=flash[:not_allowed]%><br>
-See your <a href='/user/<%=current_user.id%>/collection'>Collection</a><br>
+See your <a href='/gemstones/<%=current_user.id%>'>Collection</a><br>
 <br>
-Add a <a href='/new_gem'>NEW</a> Gemstone to your collection:<br>
+Add a <a href='/gemstone/new'>NEW</a> Gemstone to your collection:<br>
 <br>
 See <a href='/users_collections'>OTHER</a> collections:<br>
 
