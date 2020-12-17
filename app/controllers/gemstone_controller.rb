@@ -1,15 +1,33 @@
 class GemstoneController < ApplicationController
 
-    get '/new_gem' do
+    get '/gemstone/new' do
         logged_in
         erb :"gemstone/new"
     end
 
-    post '/new_gem' do
+    post '/gemstone/new' do
         #binding.pry
         redirect_hacker
-        Gemstone.create(params[:gem])
-        redirect "/user/#{params[:gem][:user_id]}/collection"
+        gemstone = Gemstone.create(params[:gem])
+        if gemstone.valid?
+        redirect "/gemstones/#{params[:gem][:user_id]}"
+        else
+            flash[:incorrect] = "Form cannot be blank or you have reached the limit in one of the fields." 
+            redirect "/gemstone/new"
+        end
+    end
+    
+    get '/gemstone/:id' do
+        logged_in
+        @gemstone = current_user.gemstones.find_by_id(params[:id])
+        erb :"gemstone/show"
+    end
+    
+    get '/gemstones/:id' do
+        #binding.pry
+            logged_in
+            @gems =  current_user.gemstones  #Gemstone.where(user_id: params[:id])
+            erb :"gemstone/index"
     end
 
     get '/gemstone/:id/edit' do
@@ -20,18 +38,18 @@ class GemstoneController < ApplicationController
         erb :"gemstone/edit"
     end
 
-    patch '/gemstone/:id/edit' do
+    patch '/gemstone/:id' do
         @gem = Gemstone.find(params[:id])
         not_authorized
         @gem.update(params[:gem])
-        redirect "user/#{current_user.id}/collection"
+        redirect "gemstones/#{current_user.id}"
     end
 
     delete '/gemstone/:id/delete' do
         @gem = Gemstone.find(params[:id])
         not_authorized
         @gem.destroy
-        redirect "/user/#{current_user.id}/collection"
+        redirect "/gemstones/#{current_user.id}"
     end
 
     private
@@ -45,7 +63,7 @@ class GemstoneController < ApplicationController
     def redirect_hacker
         if session[:user_id] != params[:gem][:user_id].to_i
         flash[:not_allowed] = "Cannot change others collections."
-        redirect "/user/#{session[:user_id]}/home"
+        redirect "/user/#{session[:user_id]}"
         end
     end
 

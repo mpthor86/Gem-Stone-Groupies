@@ -1,13 +1,15 @@
 
 <h2>Update your stone below:</h2>
 
-<form method="post" action="/gemstone/<%=@gem.id%>/edit">
+<form method="post" action="/gemstone/<%=@gem.id%>">
 <input id="hidden" type="hidden" name="_method" value="patch">
+
 Name:<input type="text" name="gem[name]" value="<%=@gem.name%>"><br>
 Properties:<input type="text" name="gem[properties]" value="<%=@gem.properties%>"><br>
 Source:<input type="text" name="gem[source]" value="<%=@gem.source%>"><br>
 <input type="submit" value="Update">
-</form>
+</form><br>
+
 <form method="post" action="/gemstone/<%=@gem.id%>/delete">
 <input id="hidden" type="hidden" name="_method" value="delete">
 <input type="submit" value="Remove Stone">
