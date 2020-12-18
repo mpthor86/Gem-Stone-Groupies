@@ -1,4 +1,5 @@
-<h2><u>Your Stone Collection</u></h2>
+
+<h2><u><%= current_user.username.pluralize.capitalize %> Stone Collection</u></h2>
 
 <%if @gems == nil || @gems.empty? %>
     Your collection is empty.<br>
@@ -12,8 +13,10 @@ Add some Gems to your collection<br>
     Name: <%= gem.name %><br>
     Properties: <%= gem.properties %><br>
     Source: <%= gem.source %><br>
+    <% unless gem.user_id != current_user.id %>
     <a href="/gemstone/<%=gem.id%>">View Stone</a><br>
     <br>
+    <%end%>
     <%end%>
     <%end%>
 <br>
