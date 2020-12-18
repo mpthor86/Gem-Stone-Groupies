@@ -1,15 +1,16 @@
 class CollectionsController < ApplicationController
-    get '/user/:id/view_collection' do
+    get '/collection/:id' do
         logged_in
         @user = User.find(params[:id])
-        session[:collection_id] = @user.id
+        #session[:collection_id] = @user.id
         @gems = Gemstone.where(user_id: params[:id])
-        erb :"collections/collection_index"
+        erb :"collections/show"
     end
 
-    get '/users_collections' do
+    get '/collections' do
         logged_in
             @user = User.all
-            erb :"collections/users_index"
+            erb :"collections/index"
     end
+
 end
