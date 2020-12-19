@@ -4,7 +4,6 @@ class CommentController < ApplicationController
         gemstone = Gemstone.find_by(params[:id])
         @comments = gemstone.comments
         #binding.pry
-        
         erb :"comments/index"
     end
     
