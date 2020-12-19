@@ -1,11 +1,10 @@
 class CommentController < ApplicationController
-    get '/:id/comments' do
+    get '/gemstone/:id/comments' do
         logged_in
-        @comments = Comment.where(collection_id: params[:id].to_i)
+        gemstone = Gemstone.find_by(params[:id])
+        @comments = gemstone.comments
         #binding.pry
-        @comments.each do |com|
-            @user = User.where(id: com.user_id)
-        end
+        
         erb :"comments/index"
     end
     

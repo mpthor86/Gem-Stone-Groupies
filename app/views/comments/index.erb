@@ -1,16 +1,12 @@
 
 
-<% if @user == nil || @comments.empty? %>
+<% if @comments == nil %>
     No one has commented on this collection.
     <%else%>
-<% @user.each do |user| %>
 <% @comments.each do |comment| %>
-    <% if user.id == comment.user_id %>
-    User: <%= user.username %><br>
-    <%end%>
+    User: <%= comment.user.username %><br>
     Comment: <%= comment.comment %><br>
     <br>
-    <%end%>
     <%end%>
     <%end%>
 
