@@ -23,7 +23,7 @@ class GemstoneController < ApplicationController
         erb :"gemstone/show"
     end
     
-    get '/gemstones/:id' do
+    get '/gemstones' do
         #binding.pry
             logged_in
             @gems =  current_user.gemstones  #Gemstone.where(user_id: params[:id])
